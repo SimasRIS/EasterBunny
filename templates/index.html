@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Velyku Triusiukas</title>
+    <link rel="stylesheet" href="../static/easter_Bunny_css.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div id="messages"></div>
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="Teksta rašykite čia...">
+            <button type="submit">Siusti</button>
+            <button type="button" id="reset-btn">Naujas pokalbis</button>
+        </form>
+    </div>
+
+    <script>
+        const messageEl = document.getElementById('messages');
+        const chatForm = document.getElementById('chat-form');
+        const messageIntput = document.getElementById('message-input');
+        const resetBtn = document.getElementById('reset-btn');
+
+        function appendMessage(text, sender) {
+            const msgEl = document.createElement('div');
+            msgEl.className = `message ${sender}`;
+            const bubble = document.createElement('div');
+            bubble.className = `bubble ${sender}`;
+            bubble.textContent = text;
+            msgEl.appendChild(bubble); // AI zinute
+            messageEl.appendChild(msgEl); // Vartotojo zinute
+            messageEl.scrollTop = messageEl.scrollHeight; // Nuleidzia teksta zemyn kai gauna atsakyma
+        }
+        appendMessage('Sveiki Aš esu Velykų Triušiukas, kaip galiu jums padėti?', "bot")
+        chatForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            const text = messageIntput.value.trim(); // neleidzia speceliu simboliu rasyti
+            if (!text) return;
+            appendMessage(text, 'user');
+            messageIntput.value = '';
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({message: text})
+            });
+            const data = await response.json();
+            appendMessage(data.reply, 'bot');
+        });
+        resetBtn.addEventListener('click', async() => {
+            await fetch('/reset-history');
+            messageEl.innerHTML = '';
+            appendMessage('Sveiki Aš esu Velykų Triušiukas, kaip galiu jums padėti?', 'bot');
+        });
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

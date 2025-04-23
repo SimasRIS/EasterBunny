@@ -1,0 +1,99 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("easter_bunny.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.chat-container {
+  width: 400px;
+  height: 80%;
+  background: #FFFFFF;
+  border: 4px solid #FFD1DC;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#messages {
+  flex: 1;
+  padding: 16px;
+  background: #FFF;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message {
+  display: flex;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.bot {
+  justify-content: flex-start;
+}
+
+.bubble {
+  padding: 8px 16px;
+  border-radius: 16px;
+  max-width: 70%;
+}
+
+.bubble.user {
+  background: #D1C4E9;
+  color: #000;
+}
+
+.bubble.bot {
+  background: #E1F5FE;
+  color: #000;
+}
+
+.bubble.bot::before {
+  content: "🐰";
+  margin-right: 2px;
+}
+
+.bubble.user::before {
+  content: "🥚";
+  margin-left: 2px;
+}
+
+form {
+  border-top: 1px solid #DDD;
+  padding: 8px;
+  background: #FFF;
+  display: flex;
+  box-sizing: border-box;
+}
+
+form input {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #B39DDB;
+  border-radius: 8px;
+}
+
+form button {
+  margin-left: 8px;
+  padding: 8px 16px;
+  border: none;
+  background: #FFB74D;
+  color: #FFF;
+  border-radius: 8px;
+  cursor: pointer;
+}
