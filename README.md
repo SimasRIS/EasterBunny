@@ -28,33 +28,45 @@ Kai vaikas atidaro programą, Triušiukas pasisveikina ir laukia klausimų. Vaik
 
 ## Kaip įsidiegti programą
 
+
+1. Atsisiųskite programą
 ```
-# 1 — Atsisiųskite programą
 $ git clone https://github.com/SimasRIS/EasterBunny.git
-$ cd EasterBunny
-
-# 2 — Pasiruoškite programos aplinką
-$ python -m venv venv
-# Windows kompiuteriams:
-$ venv\Scripts\activate
-# Apple/Linux kompiuteriams:
-$ source venv/bin/activate
-
-# 3 — Įdiekite reikalingas dalis
-$ pip install -r requirements.txt
-
-# 4 — Nustatykite slaptažodžius
-$ copy .env.example .env  # arba sukurkite .env patys
-# Įrašykite į .env failą:
-OPENAI_API_KEY="sk-..."
-FLASK_SECRET_KEY="slapta_velyku_morka"
-
-# 5 — Paleiskite programą
-$ python app.py
-
-# 6 — Atidarykite naršyklėje
-http://127.0.0.1:5000/
 ```
+```
+$ cd EasterBunny
+```
+2. Pasiruoškite programos aplinką
+```
+$ python -m venv venv
+```
+- Windows kompiuteriams:
+```
+$ venv\Scripts\activate
+```
+- Apple/Linux kompiuteriams:
+```
+$ source venv/bin/activate
+```
+3. Įdiekite reikalingas dalis
+```
+$ pip install -r requirements.txt
+```
+4. Nustatykite slaptažodžius<br>
+- sukurkite .env patys
+- Įrašykite į .env failą:
+```
+OPENAI_API_KEY="sk-..."
+```
+```
+FLASK_SECRET_KEY="slapta_velyku_morka"
+```
+5. Paleiskite programą
+```
+$ python app.py
+```
+6. Atidarykite naršyklėje<br>
+http://127.0.0.1:5000/
 
 ---
 
